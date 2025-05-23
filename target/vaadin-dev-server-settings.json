@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "D:/Escritorio/Ciclo V/DAW/Parcial2/Parcial2/Plataforma_de_Gestion_de_Practicas_Profesionales-main/src/main/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "D:/Escritorio/Ciclo V/DAW/Parcial2/Parcial2/Plataforma_de_Gestion_de_Practicas_Profesionales-main/src/main/frontend/generated/jar-resources",
+  "staticOutput": "D:/Escritorio/Ciclo V/DAW/Parcial2/Parcial2/Plataforma_de_Gestion_de_Practicas_Profesionales-main/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\target\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "D:/Escritorio/Ciclo V/DAW/Parcial2/Parcial2/Plataforma_de_Gestion_de_Practicas_Profesionales-main/target/dev-bundle/webapp",
+  "devBundleStatsOutput": "D:/Escritorio/Ciclo V/DAW/Parcial2/Parcial2/Plataforma_de_Gestion_de_Practicas_Profesionales-main/target/dev-bundle/config",
+  "jarResourcesFolder": "D:/Escritorio/Ciclo V/DAW/Parcial2/Parcial2/Plataforma_de_Gestion_de_Practicas_Profesionales-main/src/main/frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}

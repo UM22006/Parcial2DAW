@@ -1,0 +1,19 @@
+{
+  "productionMode": false,
+  "eagerServerLoad": false,
+  "npmFolder": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main",
+  "node.version": "v22.14.0",
+  "frontend.hotdeploy": true,
+  "node.download.root": "https://nodejs.org/dist/",
+  "frontendFolder": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\src\\main\\frontend",
+  "connect.javaSourceFolder": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\src\\main\\java",
+  "javaResourceFolder": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\src\\main\\resources",
+  "connect.applicationProperties": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\src\\main\\resources\\application.properties",
+  "connect.openApiFile": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\target\\generated-resources\\openapi.json",
+  "project.frontend.generated": "D:\\Escritorio\\Ciclo V\\DAW\\Parcial2\\Parcial2\\Plataforma_de_Gestion_de_Practicas_Profesionales-main\\src\\main\\frontend\\generated",
+  "pnpm.enable": false,
+  "bun.enable": false,
+  "require.home.node": false,
+  "build.folder": "target",
+  "react.enable": true
+}
