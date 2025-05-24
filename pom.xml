@@ -34,7 +34,7 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Vaadin dependencies -->
+        <!-- Vaadin -->
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin</artifactId>
