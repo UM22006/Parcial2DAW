@@ -1,12 +1,11 @@
 # Etapa de construcción
-FROM maven:3.9-eclipse-temurin AS builder
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 COPY . .
 
-# Ejecuta el build completo de frontend Vaadin + empaquetado
-RUN mvn vaadin:prepare-frontend vaadin:build-frontend
-RUN mvn clean package -DskipTests
+# 👉 Usa el perfil production para compilar y evitar errores de dev
+RUN mvn clean install -Pproduction -DskipTests
 
 # Etapa final (solo JAR)
 FROM eclipse-temurin:21-jdk
