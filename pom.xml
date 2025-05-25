@@ -30,8 +30,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- Forzar versión estable y compatible de commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.11.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <dependencies>
         <!-- Vaadin -->
