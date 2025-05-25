@@ -17,7 +17,6 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @Layout
-@AnonymousAllowed
 public class MainLayout extends AppLayout {
 
     private H1 viewTitle;

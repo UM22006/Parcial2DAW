@@ -1,5 +1,6 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "automatic",
-    "sqltools.connections": []
+    "sqltools.connections": [],
+    "java.debug.settings.onBuildFailureProceed": true
 }

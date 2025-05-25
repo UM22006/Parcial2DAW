@@ -1,8 +1,8 @@
 import { injectGlobalWebcomponentCss } from 'Frontend/generated/jar-resources/theme-util.js';
 
 import '@vaadin/polymer-legacy-adapter/style-modules.js';
-import '@vaadin/app-layout/theme/lumo/vaadin-app-layout.js';
 import '@vaadin/vertical-layout/theme/lumo/vaadin-vertical-layout.js';
+import '@vaadin/app-layout/theme/lumo/vaadin-app-layout.js';
 import '@vaadin/field-highlighter/theme/lumo/vaadin-field-highlighter.js';
 import '@vaadin/common-frontend/ConnectionIndicator.js';
 import '@vaadin/accordion/theme/lumo/vaadin-accordion.js';
