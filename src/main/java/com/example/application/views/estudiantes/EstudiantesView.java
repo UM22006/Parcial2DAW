@@ -1,5 +1,9 @@
 package com.example.application.views.estudiantes;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import com.example.application.data.Estudiante;
 import com.example.application.services.EstudianteService;
 import com.example.application.views.MainLayout;
@@ -15,14 +19,15 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import jakarta.annotation.security.PermitAll;
 
 @PageTitle("Estudiantes")
 @Route(value = "estudiantes", layout = MainLayout.class)
-@PermitAll
-public class EstudiantesView extends VerticalLayout {
+@PreAuthorize("hasRole('ADMIN')")
+public class EstudiantesView extends VerticalLayout implements BeforeEnterObserver {
 
     private final EstudianteService estudianteService;
 
@@ -38,7 +43,7 @@ public class EstudiantesView extends VerticalLayout {
     private final TextField carrera = new TextField("Carrera");
 
     private final Button guardar = new Button("💾 Guardar");
-    private final Button limpiar = new Button("🧹 Limpiar");
+    private final Button limpiar = new Button("🩹 Limpiar");
 
     private final Grid<Estudiante> grid = new Grid<>(Estudiante.class, false);
     private final BeanValidationBinder<Estudiante> binder = new BeanValidationBinder<>(Estudiante.class);
@@ -47,6 +52,12 @@ public class EstudiantesView extends VerticalLayout {
 
     public EstudiantesView(EstudianteService estudianteService) {
         this.estudianteService = estudianteService;
+
+        // ✅ Imprimir los roles del usuario actual
+        System.out.println("🔐 Roles del usuario actual:");
+        for (GrantedAuthority authority : SecurityContextHolder.getContext().getAuthentication().getAuthorities()) {
+            System.out.println(" - " + authority.getAuthority());
+        }
 
         setSizeFull();
         setPadding(true);
@@ -66,6 +77,17 @@ public class EstudiantesView extends VerticalLayout {
         acciones.getStyle().set("margin-top", "0.5em");
 
         add(titulo, formLayout, acciones, grid);
+    }
+
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        boolean isAdmin = SecurityContextHolder.getContext().getAuthentication()
+            .getAuthorities().stream()
+            .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+
+        if (!isAdmin) {
+            event.rerouteTo("inicio");
+        }
     }
 
     private FormLayout crearFormulario() {
@@ -130,7 +152,6 @@ public class EstudiantesView extends VerticalLayout {
     private void configurarGrid() {
         grid.removeAllColumns();
 
-        // ✅ Mostrar todos los campos
         grid.addColumn(Estudiante::getCarnet).setHeader("Carnet");
         grid.addColumn(Estudiante::getPrimerNombre).setHeader("Primer Nombre");
         grid.addColumn(Estudiante::getSegundoNombre).setHeader("Segundo Nombre");
@@ -141,62 +162,6 @@ public class EstudiantesView extends VerticalLayout {
         grid.addColumn(Estudiante::getEdad).setHeader("Edad");
         grid.addColumn(Estudiante::getDireccion).setHeader("Dirección");
         grid.addColumn(Estudiante::getCarrera).setHeader("Carrera");
-
-        // ✅ Botón Editar con estilo
-        grid.addComponentColumn(estudiante -> {
-            Button editar = new Button("✏️ Editar");
-            editar.addClickListener(click -> {
-                ConfirmDialog dialog = new ConfirmDialog();
-                dialog.setHeader("¿Editar estudiante?");
-                dialog.setText("¿Deseas cargar los datos de " + estudiante.getCarnet() + " en el formulario?");
-                dialog.setConfirmText("Sí, editar");
-                dialog.setCancelText("Cancelar");
-
-                dialog.addConfirmListener(e -> {
-                    editarEstudiante(estudiante);
-                    Notification.show("✏️ Estudiante cargado para edición", 2500, Notification.Position.BOTTOM_END);
-                });
-
-                dialog.open();
-            });
-
-            editar.getStyle()
-                .set("background-color", "#2563eb")
-                .set("color", "white")
-                .set("font-size", "13px")
-                .set("border-radius", "6px");
-
-            return editar;
-        }).setHeader("Editar");
-
-        // ✅ Botón Eliminar con estilo
-        grid.addComponentColumn(estudiante -> {
-            Button eliminar = new Button("🗑 Eliminar");
-            eliminar.addClickListener(click -> {
-                ConfirmDialog dialog = new ConfirmDialog();
-                dialog.setHeader("¿Eliminar estudiante?");
-                dialog.setText("¿Está seguro que desea eliminar al estudiante: " + estudiante.getCarnet() + "?");
-                dialog.setConfirmText("Sí, eliminar");
-                dialog.setCancelText("Cancelar");
-
-                dialog.addConfirmListener(e -> {
-                    estudianteService.delete(estudiante);
-                    actualizarGrid();
-                    limpiarFormulario();
-                    Notification.show("🗑 Estudiante eliminado", 3000, Notification.Position.MIDDLE);
-                });
-
-                dialog.open();
-            });
-
-            eliminar.getStyle()
-                .set("background-color", "#dc2626")
-                .set("color", "white")
-                .set("font-size", "13px")
-                .set("border-radius", "6px");
-
-            return eliminar;
-        }).setHeader("Eliminar");
 
         grid.setAllRowsVisible(true);
         grid.setWidthFull();

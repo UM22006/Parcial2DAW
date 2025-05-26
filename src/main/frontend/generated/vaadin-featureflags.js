@@ -10,6 +10,7 @@ window.Vaadin.featureFlags.fullstackSignals = false;
 window.Vaadin.featureFlags.copilotExperimentalFeatures = false;
 window.Vaadin.featureFlags.dashboardComponent = false;
 window.Vaadin.featureFlags.cardComponent = false;
+window.Vaadin.featureFlags.masterDetailLayoutComponent = false;
 window.Vaadin.featureFlags.react19 = false;
 window.Vaadin.featureFlags.accessibleDisabledButtons = false;
 window.Vaadin.featureFlags.layoutComponentImprovements = false;

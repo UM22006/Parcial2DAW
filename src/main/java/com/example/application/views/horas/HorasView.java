@@ -18,14 +18,16 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.application.views.MainLayout;
-import jakarta.annotation.security.PermitAll;
+import org.springframework.security.access.annotation.Secured;
+import jakarta.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
 @PageTitle("Control de Horas")
 @Route(value = "horas", layout = MainLayout.class)
-@PermitAll
+@RolesAllowed({"ADMIN", "USER"})
 public class HorasView extends VerticalLayout {
 
     private final ControlHorasService horasService;
